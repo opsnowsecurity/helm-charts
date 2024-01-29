@@ -1,0 +1,10 @@
+---
+{{ range .Values.extraObjects }}
+---
+{{ tpl (toYaml .) $ }}
+{{ end }}
+
+{{- range .Values.extraTemplates }}
+---
+{{ tpl . $ -}}
+{{- end }}

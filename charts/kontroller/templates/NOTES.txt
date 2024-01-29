@@ -1,0 +1,7 @@
+Thank you for installing {{ .Chart.Name }}.
+
+get running pod
+  $ kubectl --namespace={{ .Release.Namespace }} get pods -l "app.kubernetes.io/name={{ template "kontroller.name" . }},app.kubernetes.io/instance={{ .Release.Name }}"
+
+README:
+  open https://github.com/opsnowsecurity/helm-charts

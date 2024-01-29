@@ -1,0 +1,13 @@
+{{- if .Values.podDisruptionBudget -}}
+apiVersion: {{ ternary "policy/v1" "policy/v1beta1" (semverCompare ">=1.21.0-0" .Capabilities.KubeVersion.Version) }}
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "kontroller.fullname" . }}
+  labels:
+    {{- include "kontroller.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "kontroller.selectorLabels" . | nindent 6 }}
+  {{- toYaml .Values.podDisruptionBudget | nindent 2 }}
+{{- end -}}

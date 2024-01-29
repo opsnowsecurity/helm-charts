@@ -1,0 +1,212 @@
+
+fullnameOverride: ""
+nameOverride: ""
+
+replicaCount: 1
+
+profile: default
+
+image:
+  repository: ghcr.io/opsnowsecurity/kontroller
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+# - name: regcred
+
+
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+  # Image pull secrets that are attached to the ServiceAccount
+  imagePullSecrets: []
+  # Automount API credentials for the Service Account
+  automountServiceAccountToken: true
+
+command: []
+# - "/bin/sh"
+# - "-c"
+args: []
+# - ". /vault/secrets/config && exec java $JAVA_OPTS -jar ROOT.jar"
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+hostNetwork: false
+dnsPolicy: ClusterFirst
+
+terminationGracePeriodSeconds: 60
+
+podDisruptionBudget: {}
+#  maxUnavailable: 1
+#  minAvailable: 1
+
+health:
+  enabled: true
+
+readinessProbe: {}
+#  httpGet:
+#    path: /
+#    port: http
+#  initialDelaySeconds: 60
+#  periodSeconds: 10
+#  failureThreshold: 3
+
+livenessProbe: {}
+#  httpGet:
+#    path: /
+#    port: http
+#  initialDelaySeconds: 60
+#  periodSeconds: 10
+#  failureThreshold: 3
+
+startupProbe: {}
+#  httpGet:
+#    path: /
+#    port: http
+#  initialDelaySeconds: 15
+#  timeoutSeconds: 1
+#  failureThreshold: 60
+#  periodSeconds: 5
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# load envFrom
+configmap:
+  enabled: false
+  data: {}
+  # MESSAGE: "hello world"
+
+# load envFrom
+secret:
+  enabled: false
+  data: {}
+  # SECRET: "c2VjcmV0IHdvcmxkCg=="
+
+env: []
+#- name: JAVA_OPTS
+#  value: -XX:InitialRAMPercentage=40.0 -XX:MaxRAMPercentage=80.0
+
+envFromConfigMaps: []
+## - name: configmap-name
+##   optional: true
+
+envFromSecrets: []
+## - name: secret-name
+##   optional: true
+
+## Array of extra Kubernetes manifests, in form of YAML object,
+## if you want to deploy
+extraObjects: []
+#- apiVersion: v1
+#  kind: ConfigMap
+#  metadata:
+#    name: '{{ template "opsnow.fullname" . }}-extra-config'
+
+## Array of extra Kubernetes manifest, in form of template string,
+## if you want to deploy
+extraTemplates: []
+#- |
+#  apiVersion: external-secrets.io/v1beta1
+#  kind: ExternalSecret
+#  metadata:
+#    name: sample-external-secret
+#    labels:
+#   {{- include "opsnow.labels" . | nindent 4 }}
+#  spec:
+#    dataFrom:
+#    - extract:
+#        conversionStrategy: Default
+#        decodingStrategy: None
+#        key: sre/sre-sample-projects/dkc
+#      rewrite:
+#        - regexp:
+#            source: sre/sre-sample-projects/dkc/(.*)
+#            target: $1
+#    refreshInterval: 1h
+#    secretStoreRef:
+#      kind: ClusterSecretStore
+#      name: sre
+#    target:
+#      creationPolicy: Owner
+#      deletionPolicy: Retain
+#      name: sample-secret
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: false
+  # storageClassName: "-"
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  # annotations: {}
+  # selectorLabels: {}
+  ## Sub-directory of the PV to mount. Can be templated.
+  # subPath: ""
+  ## Name of an existing PVC. Can be templated.
+  # existingClaim:
+  ## Extra labels to apply to a PVC.
+  extraPvcLabels: {}
+
+# -- Additional volumeMounts to the server main container
+volumeMounts: []
+#  - mountPath: /usr/local/bin/kubelogin
+#    name: custom-tools
+#    subPath: kubelogin
+
+# -- Additional volumes to the server pod
+volumes: []
+#  - name: custom-tools
+#    emptyDir: {}
+
+rbac:
+  create: true
+  clusterRole:
+    extraRules: []
