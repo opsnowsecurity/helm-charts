@@ -7,7 +7,7 @@ replicaCount: 1
 profile: default
 
 image:
-  repository: ghcr.io/opsnowsecurity/kontroller
+  repository: ghcr.io/opsnowsecurity/scarif-kontroller:latest
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -46,13 +46,11 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+securityContext:
+  allowPrivilegeEscalation: true
+  privileged: true
+  readOnlyRootFilesystem: false
+  procMount: Unmasked
 
 hostNetwork: false
 dnsPolicy: ClusterFirst
@@ -210,3 +208,18 @@ rbac:
   create: true
   clusterRole:
     extraRules: []
+
+common: {}
+
+versioncheckInterval: 60m
+
+kollector:
+  image:
+    repository: ghcr.io/opsnowsecurity/scarif-kollector:latest
+    pullPolicy: Always
+    katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
+    statusInterval: 10m
+    pageSize: "0"
+    pageInterval: "10"
+    pageEmergencyInterval: "1"
+    gracefulShutdownTimeout: "30"
