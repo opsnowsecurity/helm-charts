@@ -5,11 +5,12 @@ kontroller helm chart
 ## add repo
 ```
 helm repo add opsnowsecurity https://opsnowsecurity.github.io/helm-charts
+helm repo update
 ```
 
 ## install chart
 ```
-helm upgrade --install my-release scarif/opsnow
+helm upgrade --install my-release opsnowsecurity/kontroller
 ```
 
 ## uninstall chart
