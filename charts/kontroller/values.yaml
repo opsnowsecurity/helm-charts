@@ -209,7 +209,8 @@ rbac:
   clusterRole:
     extraRules: []
 
-common: {}
+common:
+  authUrl: "https://scarif-dev-kspm-test.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 versioncheckInterval: 60m
 
@@ -218,8 +219,10 @@ kollector:
     repository: ghcr.io/opsnowsecurity/scarif-kollector:latest
     pullPolicy: Always
     katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
-    statusInterval: 10m
-    pageSize: "0"
-    pageInterval: "10"
-    pageEmergencyInterval: "1"
-    gracefulShutdownTimeout: "30"
+  
+  # 향후 제거 예정
+  statusInterval: 10m
+  pageSize: "0"
+  pageInterval: "10"
+  pageEmergencyInterval: "1"
+  gracefulShutdownTimeout: "30"
