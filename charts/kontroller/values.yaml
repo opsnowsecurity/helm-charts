@@ -7,10 +7,10 @@ replicaCount: 1
 profile: default
 
 image:
-  repository: ghcr.io/opsnowsecurity/scarif-kontroller:latest
+  repository: ghcr.io/opsnowsecurity/scarif-kontroller
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.0.0"
 
 imagePullSecrets: []
 # - name: regcred
