@@ -8,7 +8,7 @@ profile: default
 
 image:
   repository: ghcr.io/opsnowsecurity/scarif-kontroller
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.0.0"
 
