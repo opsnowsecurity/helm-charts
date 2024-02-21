@@ -148,7 +148,7 @@ extraObjects: []
 
 ## Array of extra Kubernetes manifest, in form of template string,
 ## if you want to deploy
-extraTemplates: []
+extraTemplates:
   - |
     apiVersion: v1
     kind: ServiceAccount
