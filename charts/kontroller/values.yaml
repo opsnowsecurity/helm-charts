@@ -148,9 +148,7 @@ extraObjects: []
 
 ## Array of extra Kubernetes manifest, in form of template string,
 ## if you want to deploy
-extraTemplates:
-  - opsnow-security-serviceaccount.yaml
-  - opsnow-security-rbac.yaml
+extraTemplates: []
 #- |
 #  apiVersion: external-secrets.io/v1beta1
 #  kind: ExternalSecret
@@ -228,3 +226,9 @@ kollector:
   pageInterval: "10"
   pageEmergencyInterval: "1"
   gracefulShutdownTimeout: "30"
+
+  serviceAccount:
+    create: true
+    name: opsnow-security
+  rbac:
+    create: true

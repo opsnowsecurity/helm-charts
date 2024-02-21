@@ -96,3 +96,28 @@ Return the appropriate apiVersion for Horizontal Pod Autoscaler. - from redis ch
 {{- print "autoscaling/v2" -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create the name of the service account for kollector
+*/}}
+{{- define "kollector.serviceAccountName" -}}
+{{- if .Values.kollector.serviceAccount.create }}
+{{- default "default" .Values.kollector.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
+
+{{/*
+kollector labels
+*/}}
+{{- define "kollector.labels" -}}
+app.kubernetes.io/name: "kollector"
+{{- end }}
+
+{{/*
+Return namespace of kollector
+*/}}
+{{- define "kollector.namespace" -}}
+{{- default .Release.Namespace .Values.kollector.namespace }}
+{{- end -}}
