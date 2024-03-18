@@ -225,7 +225,7 @@ kollector:
   pageSize: "0"
   pageInterval: "10"
   pageEmergencyInterval: "1"
-  gracefulShutdownTimeout: "30"
+  gracefulShutdownTimeout: "5"
 
   serviceAccount:
     create: true
