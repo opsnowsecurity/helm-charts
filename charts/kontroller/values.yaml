@@ -222,7 +222,7 @@ kollector:
   
   # 향후 제거 예정
   statusInterval: 10m
-  pageSize: "0"
+  pageSize: "100"
   pageInterval: "10"
   pageEmergencyInterval: "1"
   gracefulShutdownTimeout: "5"
