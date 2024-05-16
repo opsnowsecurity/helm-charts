@@ -112,6 +112,8 @@ spec:
             value: "{{ .Values.kollector.pageEmergencyInterval}}"
           - name: KOLLECTOR_GRACEFULSHUTDOWN_TIMEOUT
             value: "{{ .Values.kollector.gracefulShutdownTimeout}}"
+          - name: KONTROLLER_GRACEFULSHUTDOWN_TIMEOUT
+            value: "{{ .Values.kontroller.gracefulShutdownTimeout}}"
           {{- with .Values.env }}
           {{- toYaml . | nindent 10 }}
           {{- end }}

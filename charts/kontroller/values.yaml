@@ -214,6 +214,9 @@ common:
 
 versioncheckInterval: 60m
 
+kontroller:
+  gracefulShutdownTimeout: "60"
+
 kollector:
   image:
     repository: ghcr.io/opsnowsecurity/scarif-kollector:latest
