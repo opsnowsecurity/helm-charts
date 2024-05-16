@@ -210,7 +210,7 @@ rbac:
     extraRules: []
 
 common:
-  authUrl: "https://scarif-dev-kspm-test.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
+  authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 versioncheckInterval: 60m
 
