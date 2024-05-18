@@ -224,6 +224,8 @@ kollector:
     katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
   
   # 향후 제거 예정
+  katcherPayloadSize: "6"
+  # katcherPayloadSize 6mb로 제한
   statusInterval: 10m
   pageSize: "100"
   pageInterval: "10"
