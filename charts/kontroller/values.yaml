@@ -223,6 +223,17 @@ kollector:
     pullPolicy: Always
     katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
   
+  resources: {
+    limits: {
+      cpu: 520,
+      memory: 200
+    },
+    requests: {
+      cpu: 200,
+      memory: 50
+    }
+  }
+  
   # 향후 제거 예정
   katcherPayloadSize: "6"
   # katcherPayloadSize 6mb로 제한

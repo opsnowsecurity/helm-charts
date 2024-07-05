@@ -116,6 +116,14 @@ spec:
             value: "{{ .Values.kollector.gracefulShutdownTimeout}}"
           - name: KONTROLLER_GRACEFULSHUTDOWN_TIMEOUT
             value: "{{ .Values.kontroller.gracefulShutdownTimeout}}"
+          - name: KOLLECTOR_CPU_LIMIT
+            value: "{{ .Values.kollector.resources.limits.cpu}}"
+          - name: KOLLECTOR_MEMORY_LIMIT
+            value: "{{ .Values.kollector.resources.limits.memory}}"
+          - name: KOLLECTOR_CPU_REQUEST
+            value: "{{ .Values.kollector.resources.requests.cpu}}"
+          - name: KOLLECTOR_MEMORY_REQUEST
+            value: "{{ .Values.kollector.resources.requests.memory}}"
           {{- with .Values.env }}
           {{- toYaml . | nindent 10 }}
           {{- end }}
