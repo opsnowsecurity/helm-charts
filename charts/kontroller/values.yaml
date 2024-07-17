@@ -235,12 +235,7 @@ kollector:
   }
   
   # 향후 제거 예정
-  katcherPayloadSize: "6"
-  # katcherPayloadSize 6mb로 제한
   statusInterval: 10m
-  pageSize: "100"
-  pageInterval: "10"
-  pageEmergencyInterval: "1"
   gracefulShutdownTimeout: "5"
 
   serviceAccount:
