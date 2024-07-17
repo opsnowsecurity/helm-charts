@@ -102,8 +102,16 @@ spec:
             value: "{{ .Values.kollector.image.pullPolicy }}"
           - name: KOLLECTOR_KATCHER_URL
             value: "{{ .Values.kollector.katcherUrl}}"
+          - name: KOLLECTOR_KATCHER_PAYLOAD_SIZE
+            value: "{{ .Values.kollector.katcherPayloadSize}}"
           - name: KOLLECTOR_STATUS_INTERVAL
             value: "{{ .Values.kollector.statusInterval}}"
+          - name: KOLLECTOR_PAGE_SIZE
+            value: "{{ .Values.kollector.pageSize}}"
+          - name: KOLLECTOR_PAGE_INTERVAL
+            value: "{{ .Values.kollector.pageInterval}}"
+          - name: KOLLECTOR_PAGE_EMERGENCY_INTERVAL
+            value: "{{ .Values.kollector.pageEmergencyInterval}}"
           - name: KOLLECTOR_GRACEFULSHUTDOWN_TIMEOUT
             value: "{{ .Values.kollector.gracefulShutdownTimeout}}"
           - name: KONTROLLER_GRACEFULSHUTDOWN_TIMEOUT
