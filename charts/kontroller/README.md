@@ -29,6 +29,7 @@ helm uninstall my-release
 | KMANAGER_HOST | |
 | KMANAGER_PORT | |
 | VERSION_CHECK_INTERVAL | |
+| VERSION_RETRY_INTERVAL | |
 | APP_ENV | |
 
 # configuration
