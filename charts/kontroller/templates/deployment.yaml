@@ -96,6 +96,8 @@ spec:
             value: "{{ .Values.common.appenv }}"
           - name: VERSION_CHECK_INTERVAL
             value: "{{ .Values.versioncheckInterval }}"
+          - name: VERSION_RETRY_INTERVAL
+            value: "{{ .Values.versionRetryInterval }}"
           - name: KOLLECTOR_IMAGE_REPOSITORY
             value: "{{ .Values.kollector.image.repository }}"
           - name: KOLLECTOR_IMAGE_PULLPOLICY

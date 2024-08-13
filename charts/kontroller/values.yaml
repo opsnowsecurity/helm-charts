@@ -213,6 +213,7 @@ common:
   authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 versioncheckInterval: 60m
+versionRetryInterval: 30s
 
 kontroller:
   gracefulShutdownTimeout: "60"
