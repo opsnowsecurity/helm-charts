@@ -1,19 +1,31 @@
 {{- if .Values.rbac.create }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
   name: {{ include "kontroller.fullname" . }}
+  namespace: {{ include "kontroller.namespace" . }}
   labels:
     {{- include "kontroller.labels" . | nindent 4 }}
 rules:
 - apiGroups:
   - '*'
   resources:
-  - '*'
+  - 'daemonsets'
   verbs:
   - get
   - list
-{{ if .Values.rbac.clusterRole.extraRules }}
-{{ toYaml .Values.rbac.clusterRole.extraRules }}
+  - create
+  - update
+  - delete
+- apiGroups:
+  - '*'
+  resources:
+  - 'deployments'
+  verbs:
+  - get
+  - list
+  - delete
+{{ if .Values.rbac.role.extraRules }}
+{{ toYaml .Values.rbac.role.extraRules }}
 {{ end }}
 {{- end }}

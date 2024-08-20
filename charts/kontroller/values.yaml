@@ -208,6 +208,8 @@ rbac:
   create: true
   clusterRole:
     extraRules: []
+  role:
+    extraRules: []
 
 common:
   authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
