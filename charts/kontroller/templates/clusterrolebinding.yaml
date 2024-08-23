@@ -12,8 +12,10 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "kontroller.serviceAccountName" . }}
+    namespace: {{ include "kontroller.namespace" . }}
 {{- if .Values.kollector.rbac.create }}
   - kind: ServiceAccount
     name: {{ include "kollector.serviceAccountName" . }}
+    namespace: {{ include "kollector.namespace" . }}
 {{- end}}
 {{- end }}
