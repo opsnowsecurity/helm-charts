@@ -15,6 +15,12 @@ image:
 imagePullSecrets: []
 # - name: regcred
 
+service:
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 3000
+  annotations: {}
+  labels: {}
 
 updateStrategy:
   type: RollingUpdate
