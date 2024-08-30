@@ -17,5 +17,5 @@ spec:
       nodePort: {{ .Values.service.nodePort }}
   {{- end}}
   selector:
-    app:   {{- include "kontroller.selectorLabels" . | nindent 4 }}
+    app: {{ include "kontroller.fullname" . }}
 
