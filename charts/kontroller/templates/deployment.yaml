@@ -38,7 +38,7 @@ spec:
       {{- with .Values.volumes }}
         {{- toYaml . | nindent 8}}
       {{- end }}
-      {{- if .Values.persistence.enabled }}
+      {{- if and .Values.persistence.enabled .Values.kontroller.persistence.enabled }}
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.existingClaim | default (printf "%s-%s" (include "kontroller.fullname" .) "data") }}
@@ -144,7 +144,7 @@ spec:
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- if .Values.persistence.enabled }}
+          {{- if and .Values.persistence.enabled .Values.kontroller.persistence.enabled }}
             - name: data
               mountPath: /data
               {{- if .Values.persistence.subPath }}

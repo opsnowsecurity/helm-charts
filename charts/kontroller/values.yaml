@@ -185,19 +185,31 @@ extraTemplates: []
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  enabled: false
-  # storageClassName: "-"
+  enabled: true
+  volumeName: opsnow-security-pv
+  claimName: opsnow-security-pvc
+#  storageClassName: "-"
   accessModes:
     - ReadWriteOnce
-  size: 10Gi
+  size: 10Mi
   # annotations: {}
-  # selectorLabels: {}
+  selectorLabels: {
+    name: opsnow-security-pv
+  }
   ## Sub-directory of the PV to mount. Can be templated.
   # subPath: ""
   ## Name of an existing PVC. Can be templated.
   # existingClaim:
   ## Extra labels to apply to a PVC.
-  extraPvcLabels: {}
+  extraPvcLabels: {
+    name: opsnow-security-pvc
+  }
+  extraPvLabels: {
+    name: opsnow-security-pv
+  }
+  hostPath:
+    path: /mnt/logs
+    type: DirectoryOrCreate
 
 # -- Additional volumeMounts to the server main container
 volumeMounts: []
@@ -225,13 +237,16 @@ versionRetryInterval: 30s
 
 kontroller:
   gracefulShutdownTimeout: "60"
+  persistence:
+    enabled: false
 
 kollector:
   image:
     repository: ghcr.io/opsnowsecurity/scarif-kollector:latest
     pullPolicy: Always
     katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
-  
+  persistence:
+    enabled: true
   resources: {
     limits: {
       cpu: 520,

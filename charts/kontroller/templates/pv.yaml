@@ -1,0 +1,21 @@
+{{- if .Values.kollector.persistence.enabled -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.persistence.volumeName }}
+  labels:
+    {{- include "kontroller.labels" . | nindent 4 }}
+    {{- with .Values.persistence.extraPvLabels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  accessModes:
+    {{- range .Values.persistence.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  capacity:
+    storage: {{ .Values.persistence.size | quote }}
+  hostPath:
+    path: {{ .Values.persistence.hostPath.path }}
+    type: {{ .Values.persistence.hostPath.type }}
+  {{- end }}

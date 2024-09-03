@@ -1,8 +1,8 @@
-{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) .Values.kollector.persistence.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "kontroller.fullname" . }}-data
+  name: {{ .Values.persistence.claimName }}
   labels:
     {{- include "kontroller.labels" . | nindent 4 }}
     {{- with .Values.persistence.extraPvcLabels }}
@@ -27,9 +27,9 @@ spec:
   {{- with .Values.persistence.storageClassName }}
   storageClassName: {{ . }}
   {{- end }}
-  {{- with .Values.persistence.selectorLabels }}
   selector:
     matchLabels:
+    {{- with .Values.persistence.selectorLabels }}
     {{- toYaml . | nindent 6 }}
-  {{- end }}
+    {{- end }}
 {{- end }}
