@@ -65,6 +65,8 @@ spec:
                   fieldPath: metadata.namespace
             - name: IMAGE_TAG
               value: {{ .Values.image.tag }}
+            - name: VITE_APP_KONTROLLER_API_URL
+              value: {{ .Values.kontroller.url }}
 {{- with .Values.env }}
 {{ toYaml . | indent 10 }}
 {{- end }}
