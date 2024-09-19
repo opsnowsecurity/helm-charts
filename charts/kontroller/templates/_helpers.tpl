@@ -34,6 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "kontroller.labels" -}}
+app: {{ include "kontroller.fullname" . }}
 helm.sh/chart: {{ include "kontroller.chart" . }}
 {{ include "kontroller.selectorLabels" . }}
 app.kubernetes.io/version: {{ default .Chart.AppVersion .Values.version | quote }}
