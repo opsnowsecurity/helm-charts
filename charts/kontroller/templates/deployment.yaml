@@ -94,6 +94,8 @@ spec:
             value: "{{ .Values.common.authUrl }}"
           - name: KMANAGER_URL
             value: "{{ .Values.common.kmanagerUrl }}"
+          - name: DOMAIN
+            value: "{{ .Values.ingress.basedomain }}"
           - name: APP_ENV
             value: "{{ .Values.common.appenv }}"
           - name: VERSION_CHECK_INTERVAL
