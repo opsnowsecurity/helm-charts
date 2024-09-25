@@ -3,6 +3,16 @@ entries:
   kontroller:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2024-09-25T05:16:37.495647013Z"
+    description: A Helm chart for Kubernetes
+    digest: 483901701c67a130bf30b003af94423a1cd304f28da49396eec6744804ae94fc
+    name: kontroller
+    type: application
+    urls:
+    - https://github.com/opsnowsecurity/helm-charts/releases/download/kontroller-1.1.9/kontroller-1.1.9.tgz
+    version: 1.1.9
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2024-09-25T04:36:24.577504134Z"
     description: A Helm chart for Kubernetes
     digest: b82ac10fed3cd403a9bfe3825959816f625f588fcbaf8c0a09ba87be5239cb15
@@ -378,4 +388,4 @@ entries:
     urls:
     - https://github.com/opsnowsecurity/helm-charts/releases/download/kontroller-dashboard-v0.0.0/kontroller-dashboard-v0.0.0.tgz
     version: v0.0.0
-generated: "2024-09-25T04:36:24.577834401Z"
+generated: "2024-09-25T05:16:37.495899534Z"
