@@ -96,7 +96,7 @@ spec:
             value: "{{ .Values.common.kmanagerUrl }}"
             {{- if .Values.ingress.enabled }}
           - name: DOMAIN
-            value: "{{ .Values.ingress.basedomain }}"
+            value: "{{ .Values.ingress.subdomain }}.{{ .Values.ingress.basedomain }}"
             {{- end }}
           - name: APP_ENV
             value: "{{ .Values.common.appenv }}"
