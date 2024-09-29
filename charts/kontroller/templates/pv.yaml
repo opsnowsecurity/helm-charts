@@ -15,6 +15,9 @@ spec:
     {{- end }}
   capacity:
     storage: {{ .Values.persistence.size | quote }}
+  {{- with .Values.persistence.storageClassName }}
+  storageClassName: {{ . }}
+  {{- end }}
   hostPath:
     path: {{ .Values.persistence.hostPath.path }}
     type: {{ .Values.persistence.hostPath.type }}
