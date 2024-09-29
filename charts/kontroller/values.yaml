@@ -257,7 +257,7 @@ kollector:
     pullPolicy: Always
     katcherUrl: "http://mock-katcher-service.opsnow-security.svc.cluster.local:33455"
   persistence:
-    enabled: false
+    enabled: true
   resources: {
     limits: {
       cpu: 520,
