@@ -195,7 +195,6 @@ extraTemplates: []
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
-enabledPersistence: false
 persistence:
   enabled: true
   volumeName: opsnow-security-pv

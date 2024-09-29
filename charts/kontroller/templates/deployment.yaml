@@ -101,7 +101,7 @@ spec:
           - name: APP_ENV
             value: "{{ .Values.common.appenv }}"
           - name: ENABLED_PERSISTANCE
-            value: "{{ .Values.enabledPersistence }}"
+            value: "{{ .Values.common.enabledPersistence }}"
           - name: VERSION_CHECK_INTERVAL
             value: "{{ .Values.versioncheckInterval }}"
           - name: VERSION_RETRY_INTERVAL
