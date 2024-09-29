@@ -100,6 +100,8 @@ spec:
             {{- end }}
           - name: APP_ENV
             value: "{{ .Values.common.appenv }}"
+          - name: ENABLED_PERSISTANCE
+            value: "{{ .Values.enabledPersistence }}"
           - name: VERSION_CHECK_INTERVAL
             value: "{{ .Values.versioncheckInterval }}"
           - name: VERSION_RETRY_INTERVAL
@@ -124,8 +126,6 @@ spec:
             value: "{{ .Values.kollector.resources.requests.cpu}}"
           - name: KOLLECTOR_MEMORY_REQUEST
             value: "{{ .Values.kollector.resources.requests.memory}}"
-          - name: ENABLED_PERSISTANCE
-            value: "{{ .Values.common.enabledPersistance }}"
           {{- with .Values.env }}
           {{- toYaml . | nindent 10 }}
           {{- end }}
