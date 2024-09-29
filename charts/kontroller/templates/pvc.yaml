@@ -27,9 +27,4 @@ spec:
   {{- with .Values.persistence.storageClassName }}
   storageClassName: {{ . }}
   {{- end }}
-  selector:
-    matchLabels:
-    {{- with .Values.persistence.selectorLabels }}
-    {{- toYaml . | nindent 6 }}
-    {{- end }}
 {{- end }}
