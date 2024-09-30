@@ -201,7 +201,7 @@ persistence:
   claimName: opsnow-security-pvc
   storageClassName: efs
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteMany
   size: 10Mi
   # annotations: {}
   selectorLabels: {
