@@ -18,9 +18,6 @@ spec:
   {{- with .Values.persistence.storageClassName }}
   storageClassName: {{ . }}
   {{- end }}
-  nfs:
-    path: /nfs_share
-    server: 10.51.175.26
   hostPath:
     path: {{ .Values.persistence.hostPath.path }}
     type: {{ .Values.persistence.hostPath.type }}
