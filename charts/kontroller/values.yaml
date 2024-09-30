@@ -201,7 +201,7 @@ persistence:
   claimName: opsnow-security-pvc
   #  storageClassName: "-"
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   size: 10Mi
   # annotations: {}
   selectorLabels: {
