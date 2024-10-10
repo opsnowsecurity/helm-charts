@@ -199,7 +199,7 @@ persistence:
   enabled: true
   volumeName: opsnow-security-pv
   claimName: opsnow-security-pvc
-#  storageClassName: "-"
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   size: 10Mi
