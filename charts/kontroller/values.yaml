@@ -219,7 +219,7 @@ persistence:
     name: opsnow-security-pv
   }
   hostPath:
-    path: /mnt/logs
+    path: /var/logs
     type: DirectoryOrCreate
 
 # -- Additional volumeMounts to the server main container
