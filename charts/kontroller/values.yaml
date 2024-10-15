@@ -219,7 +219,7 @@ persistence:
     name: opsnow-security-pv
   }
   hostPath:
-    path: /var/logs
+    path: /var/errlogs
     type: DirectoryOrCreate
 
 # -- Additional volumeMounts to the server main container
