@@ -1,0 +1,29 @@
+{{- if .Values.rbac.create }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "fullname" . }}
+  namespace: {{ include "kontroller-dashboard.namespace" . }}
+  labels:
+    {{- include "kontroller-dashboard.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - '*'
+    resources:
+      - 'daemonsets'
+      - 'deployments'
+      - 'replicasets'
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - '*'
+    resources:
+      - 'pods'
+    verbs:
+      - get
+      - list
+{{ if .Values.rbac.role.extraRules }}
+{{ toYaml .Values.rbac.role.extraRules }}
+{{ end }}
+{{- end }}
