@@ -23,8 +23,8 @@ pdb: {}
 
 service:
   type: ClusterIP
-  externalPort: 80
-  internalPort: 80
+  externalPort: 3000
+  internalPort: 3000
   annotations: {}
   labels: {}
 
@@ -60,17 +60,17 @@ resources:
 readinessProbe:
   httpGet:
     path: /
-    port: 80
-  initialDelaySeconds: 15
-  periodSeconds: 15
+    port: 3000
+  initialDelaySeconds: 60
+  periodSeconds: 30
   failureThreshold: 15
 
 livenessProbe:
   httpGet:
     path: /
-    port: 80
-  initialDelaySeconds: 15
-  periodSeconds: 15
+    port: 3000
+  initialDelaySeconds: 60
+  periodSeconds: 30
   failureThreshold: 15
 
 # livenessProbe:
