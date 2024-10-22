@@ -94,14 +94,8 @@ spec:
             value: "{{ .Values.common.authUrl }}"
           - name: KMANAGER_URL
             value: "{{ .Values.common.kmanagerUrl }}"
-            {{- if .Values.ingress.enabled }}
-          - name: DOMAIN
-            value: "kontroller-dashboard.{{ .Values.ingress.basedomain }}"
-            {{- end }}
           - name: APP_ENV
             value: "{{ .Values.common.appenv }}"
-          - name: ENABLED_PERSISTANCE
-            value: "{{ .Values.common.enabledPersistence }}"
           - name: VERSION_CHECK_INTERVAL
             value: "{{ .Values.versioncheckInterval }}"
           - name: VERSION_RETRY_INTERVAL

@@ -15,24 +15,6 @@ image:
 imagePullSecrets: []
 # - name: regcred
 
-ingress:
-  enabled: false
-  subdomain: kontroller
-  basedomain: ""  # 사용자 입력값
-  hosts: {}
-  annotations:
-    kubernetes.io/ingress.class: nginx
-  #  nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  #  nginx.ingress.kubernetes.io/whitelist-source-range: 58.151.93.2/32,58.151.93.9/32,14.177.235.12/32
-  labels: {}
-
-service:
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 3000
-  annotations: {}
-  labels: {}
-
 updateStrategy:
   type: RollingUpdate
   rollingUpdate:
