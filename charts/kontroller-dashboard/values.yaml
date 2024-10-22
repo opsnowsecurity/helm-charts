@@ -29,7 +29,7 @@ service:
   labels: {}
 
 ingress:
-  enabled: false
+  enabled: true
   subdomain: kontroller-dashboard
   basedomain: ""  # 사용자 입력값
   hosts: {}
