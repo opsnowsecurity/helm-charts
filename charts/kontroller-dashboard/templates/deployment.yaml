@@ -59,6 +59,20 @@ spec:
           env:
             - name: PROFILE
               value: {{ .Values.profile }}
+            - name: CLUSTER_ID
+              value: "{{ .Values.common.clusterId }}"
+            - name: CLIENT_ACCESS_KEY
+              value: "{{ .Values.common.clientAccessKey }}"
+            - name: CLIENT_SECRET_KEY
+              value: "{{ .Values.common.clientSecretKey }}"
+            - name: AUTH_URL
+              value: "{{ .Values.common.authUrl }}"
+            - name: KMANAGER_URL
+              value: "{{ .Values.common.kmanagerUrl }}"
+            - name: DOMAIN
+              value: "kontroller-dashboard.{{ .Values.ingress.basedomain }}"
+            - name: APP_ENV
+              value: "{{ .Values.common.appenv }}"
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
