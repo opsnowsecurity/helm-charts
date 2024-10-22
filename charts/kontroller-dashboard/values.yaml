@@ -39,8 +39,8 @@ ingress:
   #  nginx.ingress.kubernetes.io/whitelist-source-range: 58.151.93.2/32,58.151.93.9/32,14.177.235.12/32
   labels: {}
 
-kontroller:
-  url: http://kontroller.svc.cluster.local/
+kontrollerDashboard:
+  url: http://kontroller-dashboard.svc.cluster.local/
 
 autoscaling:
   enabled: true
