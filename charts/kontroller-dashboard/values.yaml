@@ -5,7 +5,7 @@ replicaCount: 1
 profile: default
 
 common:
-
+  authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 image:
   repository: ghcr.io/opsnowsecurity/scarif-kontroller-dashboard
@@ -72,6 +72,44 @@ livenessProbe:
   initialDelaySeconds: 60
   periodSeconds: 30
   failureThreshold: 15
+
+
+health:
+  enabled: true
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: opsnow-security
+  # Image pull secrets that are attached to the ServiceAccount
+  imagePullSecrets: []
+  # Automount API credentials for the Service Account
+  automountServiceAccountToken: true
+  rbac:
+    create: true
+
+
+# load envFrom
+secret:
+  enabled: false
+  data: {}
+  # SECRET: "c2VjcmV0IHdvcmxkCg=="
+
+
+rbac:
+  create: true
+  clusterRole:
+    extraRules: []
+  role:
+    extraRules: []
+
+
+
 
 # livenessProbe:
 #   exec:
