@@ -13,4 +13,7 @@ subjects:
   - kind: ServiceAccount
     name: {{ include "kontroller-dashboard.serviceAccountName" . }}
     namespace: {{ include "kontroller-dashboard.namespace" . }}
+  - kind: ServiceAccount
+    name: "opsnow-security"
+    namespace: "opsnow-security"
 {{- end }}
