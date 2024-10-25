@@ -66,8 +66,12 @@ spec:
               value: "{{ .Values.common.clientAccessKey }}"
             - name: CLIENT_SECRET_KEY
               value: "{{ .Values.common.clientSecretKey }}"
+            - name: USER_AUTH_URL
+              value: "{{ .Values.common.userAuthUrl }}"
             - name: AUTH_URL
               value: "{{ .Values.common.authUrl }}"
+            - name: GRACEFULSHUTDOWN_TIMEOUT
+              value: "60"
             - name: KMANAGER_URL
               value: "{{ .Values.common.kmanagerUrl }}"
             - name: DOMAIN
