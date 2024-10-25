@@ -5,6 +5,8 @@ replicaCount: 1
 profile: default
 
 common:
+  kmanagerUrl: "https://scarifg-kmanager.prd.opsnowsecurity.com"
+  userAuthUrl: "https://scarifg-auth.prd.opsnowsecurity.com"
   authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 image:
