@@ -73,8 +73,6 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          ports:
-            - containerPort: {{ .Values.service.internalPort }}
           env:
           - name: NAMESPACE
             valueFrom:
