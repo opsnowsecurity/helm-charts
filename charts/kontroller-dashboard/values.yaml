@@ -10,7 +10,10 @@ common:
   authUrl: "https://scarif-kspm.auth.ap-northeast-2.amazoncognito.com/oauth2/token"
 
 image:
-  repository: ghcr.io/opsnowsecurity/scarif-kontroller-dashboard
+  backend:
+    repository: ghcr.io/opsnowsecurity/scarif-kontroller-dashboard-backend
+  front:
+    repository: ghcr.io/opsnowsecurity/scarif-kontroller-dashboard-front
   tag: latest
   pullPolicy: Always
 

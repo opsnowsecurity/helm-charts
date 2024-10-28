@@ -46,11 +46,12 @@ spec:
     spec:
       serviceAccountName: {{ include "kontroller-dashboard.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        # backend
+        - name: Kontroller-Dashboard-Backend
+          image: "{{ .Values.image.backend.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.service.internalPort }}
+            - containerPort: 3000
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           readinessProbe:
@@ -74,6 +75,37 @@ spec:
               value: "60"
             - name: KMANAGER_URL
               value: "{{ .Values.common.kmanagerUrl }}"
+            - name: DOMAIN
+              value: "kontroller-dashboard.{{ .Values.ingress.basedomain }}"
+            - name: APP_ENV
+              value: "{{ .Values.common.appenv }}"
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: IMAGE_TAG
+              value: {{ .Values.image.tag }}
+            - name: VITE_APP_KONTROLLER_DASHBOARD_API_URL
+              value: {{ .Values.kontrollerDashboard.url }}
+        # frontend
+        - name: Kontroller-Dashboard-Front
+          image: "{{ .Values.image.front.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          env:
+            - name: PROFILE
+              value: {{ .Values.profile }}
+            - name: USER_AUTH_URL
+              value: "{{ .Values.common.userAuthUrl }}"
+            - name: AUTH_URL
+              value: "{{ .Values.common.authUrl }}"
             - name: DOMAIN
               value: "kontroller-dashboard.{{ .Values.ingress.basedomain }}"
             - name: APP_ENV
