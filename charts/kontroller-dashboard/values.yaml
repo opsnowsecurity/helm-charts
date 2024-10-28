@@ -27,6 +27,10 @@ pod:
 pdb: {}
 
 service:
+  frontPort: 80
+  frontTargetPort: 80
+  backendPort: 3000
+  backendTargetPort: 3000
   type: ClusterIP
   externalPort: 3000
   internalPort: 3000

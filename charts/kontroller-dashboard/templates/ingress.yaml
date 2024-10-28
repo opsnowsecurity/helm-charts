@@ -1,6 +1,8 @@
 {{ if .Values.ingress.enabled }}
 {{- $fullName := include "fullname" . -}}
 {{- $servicePort := .Values.service.externalPort -}}
+{{- $frontPort := .Values.service.frontPort -}}
+{{- $backendPort := .Values.service.backendPort -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -30,7 +32,14 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $servicePort }}
+                  number: {{ $frontPort }}
+          - path: /v1/dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $backendPort }}
 {{ end }}
 {{ range .Values.ingress.hosts }}
     - host: {{ . }}
@@ -42,6 +51,13 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $servicePort }}
+                  number: {{ $frontPort }}
+          - path: v1/dashboard
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $backendPort }}
 {{ end }}
 {{ end }}
