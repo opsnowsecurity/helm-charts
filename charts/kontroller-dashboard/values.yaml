@@ -65,7 +65,7 @@ resources:
 readinessProbe:
   backend:
     httpGet:
-      path: /
+      path: /health
       port: 3000
     initialDelaySeconds: 60
     periodSeconds: 30
@@ -81,7 +81,7 @@ readinessProbe:
 livenessProbe:
   backend:
     httpGet:
-      path: /
+      path: /health
       port: 3000
     initialDelaySeconds: 60
     periodSeconds: 30
