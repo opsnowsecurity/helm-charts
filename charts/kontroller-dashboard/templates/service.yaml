@@ -21,6 +21,12 @@ spec:
   clusterIP: {{ .Values.service.clusterIP }}
 {{- end }}
   ports:
+    - name: front
+      port: {{ .Values.service.frontPort }}
+      targetPort: {{ .Values.service.frontTargetPort}}
+    - name: backend
+      port: {{ .Values.service.backendPort }}
+      targetPort: {{ .Values.service.backendTargetPort}}
     - name: http
       port: {{ .Values.service.externalPort }}
       targetPort: {{ .Values.service.internalPort }}
