@@ -47,7 +47,7 @@ spec:
       serviceAccountName: {{ include "kontroller-dashboard.serviceAccountName" . }}
       containers:
         # backend
-        - name: Kontroller-Dashboard-Backend
+        - name: kontroller-dashboard-backend
           image: "{{ .Values.image.backend.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -88,7 +88,7 @@ spec:
             - name: VITE_APP_KONTROLLER_DASHBOARD_API_URL
               value: {{ .Values.kontrollerDashboard.url }}
         # frontend
-        - name: Kontroller-Dashboard-Front
+        - name: kontroller-dashboard-front
           image: "{{ .Values.image.front.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
