@@ -27,9 +27,6 @@ spec:
     - name: backend
       port: {{ .Values.service.backendPort }}
       targetPort: {{ .Values.service.backendTargetPort}}
-    - name: http
-      port: {{ .Values.service.externalPort }}
-      targetPort: {{ .Values.service.internalPort }}
 {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort))) }}
       nodePort: {{ .Values.service.nodePort }}
 {{- end }}
