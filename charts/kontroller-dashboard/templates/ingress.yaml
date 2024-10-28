@@ -52,7 +52,7 @@ spec:
                 name: {{ $fullName }}
                 port:
                   number: {{ $frontPort }}
-          - path: v1/dashboard
+          - path: /v1/dashboard
             pathType: Prefix
             backend:
               service:
